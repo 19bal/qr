@@ -1,0 +1,1 @@
+regionprops yeteneklerini ogreniyoruz.
