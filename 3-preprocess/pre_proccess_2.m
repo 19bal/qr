@@ -1,4 +1,4 @@
-function bw=pre_proccess(I,ws,C,tm)
+function bw=pre_proccess_2(I,ws,C,tm)
 %PRE_PROCCESS adaptive threshold algoritmasý kullanýlarak hazýrlanmýþ bir imaj öniþleme fonksiyonudur.
 %
 %bw=pre_proccess(I,ws,C)mean-C veya median-C local threshold kullanarak bir binary imaj üretir.
