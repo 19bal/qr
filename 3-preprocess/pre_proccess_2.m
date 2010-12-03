@@ -1,4 +1,4 @@
-function bw=pre_proccess_2(I,ws,C,tm,dbg)
+function bw=pre_proccess_2(IM,ws,C,tm,dbg)
 %PRE_PROCCESS adaptive threshold algoritmas? kullan?larak haz?rlanm?? bir imaj ?ni?leme fonksiyonudur.
 %
 %bw=pre_proccess(I,ws,C)mean-C veya median-C local threshold kullanarak bir binary imaj ?retir.
@@ -10,7 +10,7 @@ function bw=pre_proccess_2(I,ws,C,tm,dbg)
 %
 %Bu fonksiyon Ahmet D?NER taraf?ndan ?retilmi?tir. Ondokuz May?s ?niversitesi,SAMSUN 2010
 %
-IM=imread(I);
+
 if (nargin<3)
     error('Bir I imaji,ws pencere boyutu,ve C girmelisiniz.');
 elseif (nargin==3)

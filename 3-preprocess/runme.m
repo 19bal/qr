@@ -15,10 +15,31 @@ DIR = dir(strcat(dbnm, '*.jpg'));
 
 img = imread(strcat(dbnm, DIR(4).name));
 
-bw = pre_proccess_2(img, 50, 0.05, 0, false);
+bw = boolean(1 - pre_proccess_2(img, 50, 0.05, 0, false));
+
+
+% % % % % DIPIMAGE !!!!!!!!!!!!
+a = dip_image(bw);
+
+b = berosion(a,3,-1,1);
+%...
+
+bw2 = boolean(b);
+
+L = bwlabel(bw2);
+s = regionprops(L, {'majoraxislength', 'minoraxislength', 'area'});
+majorAL = cat(1, s.MajorAxisLength);
+minorAL = cat(1, s.MinorAxisLength);
+
+areas = cat(1, s.Area);
+
+alan = majorAL .* minorAL;
+fark = alan ./ areas;
+%se = strel('line',11,90);
+%dilatedBW = imdilate(bw,se);
 
 if dbg
     figure(1)
-    subplot(211),   imshow(img)
-    subplot(212),   imshow(bw)
+    subplot(121),   imshow(img)
+    subplot(122),   imshow(bw2)
 end
