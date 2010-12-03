@@ -1,14 +1,14 @@
-function bw=pre_proccess_2(I,ws,C,tm)
-%PRE_PROCCESS adaptive threshold algoritmasý kullanýlarak hazýrlanmýþ bir imaj öniþleme fonksiyonudur.
+function bw=pre_proccess_2(I,ws,C,tm,dbg)
+%PRE_PROCCESS adaptive threshold algoritmas? kullan?larak haz?rlanm?? bir imaj ?ni?leme fonksiyonudur.
 %
-%bw=pre_proccess(I,ws,C)mean-C veya median-C local threshold kullanarak bir binary imaj üretir.
+%bw=pre_proccess(I,ws,C)mean-C veya median-C local threshold kullanarak bir binary imaj ?retir.
 %ws lokal pencere boyutudur.
-%tm =0 veya 1 olmasý mean ile median arasýnda geçiþi saðlar. tm=0 mean(default),tm=1 median dir. 
+%tm =0 veya 1 olmas? mean ile median aras?nda ge?i?i sa?lar. tm=0 mean(default),tm=1 median dir. 
 %
-%Örnek Kullanýmý;
+%?rnek Kullan?m?;
 %pre_proccess('training_4.jpg',14,0.03);
 %
-%Bu fonksiyon Ahmet DÖNER tarafýndan üretilmiþtir. Ondokuz Mayýs Üniversitesi,SAMSUN 2010
+%Bu fonksiyon Ahmet D?NER taraf?ndan ?retilmi?tir. Ondokuz May?s ?niversitesi,SAMSUN 2010
 %
 IM=imread(I);
 if (nargin<3)
@@ -32,5 +32,9 @@ bw=imcomplement(bw);
 t = strel('disk',1);
 bw = imopen(bw,t);
 bw = imclose(bw,t);
-subplot(1,2,1),imshow(IM);
-subplot(1,2,2),imshow(bw);
+
+if dbg
+    figure(11)
+    subplot(1,2,1),imshow(IM);
+    subplot(1,2,2),imshow(bw);
+end
