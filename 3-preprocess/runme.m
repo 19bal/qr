@@ -34,7 +34,7 @@ minorAL = cat(1, s.MinorAxisLength);
 areas = cat(1, s.Area);
 
 alan = majorAL .* minorAL;
-fark = alan ./ areas;
+oran = alan ./ areas;
 %se = strel('line',11,90);
 %dilatedBW = imdilate(bw,se);
 
