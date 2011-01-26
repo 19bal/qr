@@ -1,0 +1,16 @@
+IM=imread('training_3.jpg');
+IM=mat2gray(IM);
+mIM=imfilter(IM,fspecial('average',7),'replicate');
+sIM=mIM-IM-0.033;
+bw=im2bw(sIM,0);
+bw=imcomplement(bw);
+t = strel('disk',2);
+bw = imopen(bw,t);
+%se=strel('square',1);
+bw = imclose(bw,t);
+img=edge(bw,'canny');
+L = bwlabel(img,8);
+rgb = label2rgb(L);
+figure,imshow(IM);
+figure,imshow(L);
+%subplot(223),imshow(rgb);
